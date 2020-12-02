@@ -1,0 +1,12 @@
+DROP SEQUENCE user_seq;
+DROP SEQUENCE auth_seq;
+DROP SEQUENCE content_seq;
+DROP SEQUENCE comment_seq;
+DROP SEQUENCE like_seq;
+
+DROP TABLE user_table CASCADE CONSTRAINTS purge;
+DROP TABLE auth_table CASCADE CONSTRAINTS purge;
+DROP TABLE board_table CASCADE CONSTRAINTS purge;
+DROP TABLE content_table CASCADE CONSTRAINTS purge;
+DROP TABLE comment_table CASCADE CONSTRAINTS purge;
+DROP TABLE like_table CASCADE CONSTRAINTS purge;

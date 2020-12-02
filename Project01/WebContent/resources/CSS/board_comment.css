@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+.comment::after, .comment_writer_name::after, .comment_date::after, .comment-score::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.comment, .reply {
+	border-top: 1px solid #ced4da;
+	padding: 8px 0px;
+}
+
+
+.btn-modify-comment, .btn-delete-comment,
+.btn-like-comment, .btn-dislike-comment {
+    color: #000;
+}
+
+.btn-modify-comment, .btn-delete-comment {
+	cursor: pointer;
+}
+
+.btn-modify-comment {
+	margin-right: 1em;
+}
+
+.btn-modify-comment:hover {
+	color: #17a2b8;
+}
+
+.btn-delete-comment:hover {
+	color: #dc3545;
+}
+
+.btn-like-comment {
+	margin-right: 1em;
+}
+    
+.comment_date {
+	font-size: 0.75em;
+	color: #999;
+}
+
+.comment_text {
+	padding: 4px 0px;
+}
+
+.toggle-reply {
+	color: #000;
+	cursor: pointer;
+}
+
+.toggle-reply > .fa-comment {
+	margin-right: 0.5em;
+} 
+
+.reply {
+	padding-left: 1em;
+	background-color: #f7f9fa;
+}
+
+.btn-like-comment.checked, .btn-dislike-comment.checked {
+	color: #007bff;
+}
+
+.comment-pagination, .reply-pagination {
+	margin-top: 1em;
+}

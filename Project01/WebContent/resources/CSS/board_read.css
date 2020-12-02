@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.box-content-info {
+	position: relative;
+}
+
+.box-content-info::after {
+    content: '';
+    display: block;
+    clear: both;	
+}
+
+.content_date {
+	font-size: 0.75em;
+	color: #999;
+}
+
+.box-content-info2 {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.box-content-info2  .content-comment-cnt,
+.box-content-info2  .content-like-cnt {
+	margin-right: 1em;
+}
+
+.btn-modify-content, .btn-delete-content {
+	color: #000;
+}
+
+.btn-modify-content {
+	margin-right: 1em;
+}
+
+.btn-modify-content:hover {
+	color: #17a2b8;
+}
+
+.btn-delete-content:hover {
+	color: #dc3545;
+}
+
+.btn-dislike-content, .btn-like-content {
+	width: 6em;
+}
+
+.btn-like-content {
+	margin-right: 1em;
+}
+
+.btn-like-content.checked, .btn-dislike-content.checked {
+	background-color: #343A40;
+	color: #fff;
+}
+
+#board_content {
+	background-color: #fff;
+}
