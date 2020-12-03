@@ -14,8 +14,8 @@ public class CommentDao {
 	@Autowired
 	private CommentMapper commentMapper;
 	
-	public int insertComment(CommentBean commentBean) {
-		return commentMapper.insertComment(commentBean);
+	public void insertComment(CommentBean commentBean) {
+		commentMapper.insertComment(commentBean);
 	}
 	
 	public void updateCommentCnt(int content_idx) {
@@ -28,6 +28,10 @@ public class CommentDao {
 	
 	public List<CommentBean> selectCommentList(int content_idx, int comment_parent_idx, int user_idx, RowBounds rowBounds) {
 		return commentMapper.selectCommentList(content_idx, comment_parent_idx, user_idx, rowBounds);
+	}
+	
+	public CommentBean selectComment(int comment_idx, int user_idx) {
+		return commentMapper.selectComment(comment_idx, user_idx);
 	}
 	
 	public String selectCommentText(int comment_idx) {

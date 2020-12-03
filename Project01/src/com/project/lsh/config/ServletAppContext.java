@@ -24,8 +24,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.project.lsh.beans.UserBean;
 import com.project.lsh.interceptor.CheckAuthStatusInterceptor;
+import com.project.lsh.interceptor.CheckCommentWriterInterceptor;
+import com.project.lsh.interceptor.CheckContentWriterInterceptor;
 import com.project.lsh.interceptor.CheckLoginInterceptor;
-import com.project.lsh.interceptor.CheckWriterInterceptor;
 import com.project.lsh.interceptor.TopNavInterceptor;
 import com.project.lsh.mapper.AuthMapper;
 import com.project.lsh.mapper.BoardMapper;
@@ -34,6 +35,7 @@ import com.project.lsh.mapper.LikeMapper;
 import com.project.lsh.mapper.TopNavMapper;
 import com.project.lsh.mapper.UserMapper;
 import com.project.lsh.service.BoardService;
+import com.project.lsh.service.CommentService;
 import com.project.lsh.service.TopNavService;
 
 @Configuration
@@ -57,6 +59,8 @@ public class ServletAppContext implements WebMvcConfigurer {
 	private UserBean loginUserBean;
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private CommentService commentService;
 	
 	// Controller의 메서드가 반환하는 JSP의 이름 앞뒤에 경로와 확장자를 붙혀주도록 설정한다.
 	@Override
@@ -171,9 +175,13 @@ public class ServletAppContext implements WebMvcConfigurer {
 		reg3.addPathPatterns("/board/*");
 		reg3.excludePathPatterns("/board/main");
 		
-		CheckWriterInterceptor checkWriterInterceptor = new CheckWriterInterceptor(loginUserBean, boardService);
-		InterceptorRegistration reg4 = registry.addInterceptor(checkWriterInterceptor);
+		CheckContentWriterInterceptor checkContentWriterInterceptor = new CheckContentWriterInterceptor(loginUserBean, boardService);
+		InterceptorRegistration reg4 = registry.addInterceptor(checkContentWriterInterceptor);
 		reg4.addPathPatterns("/board/modify", "/board/delete");
+		
+		CheckCommentWriterInterceptor checkCommentWriterInterceptor = new CheckCommentWriterInterceptor(loginUserBean, commentService);
+		InterceptorRegistration reg5 = registry.addInterceptor(checkCommentWriterInterceptor);
+		reg5.addPathPatterns("/comment/modify", "/comment/delete");
 	}
 	
 	@Bean

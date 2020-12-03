@@ -5,28 +5,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.project.lsh.beans.ContentBean;
+import com.project.lsh.beans.CommentBean;
 import com.project.lsh.beans.UserBean;
-import com.project.lsh.service.BoardService;
+import com.project.lsh.service.CommentService;
 
-public class CheckWriterInterceptor implements HandlerInterceptor {
+public class CheckCommentWriterInterceptor implements HandlerInterceptor {
 	private UserBean loginUserBean;
-	private BoardService boardService;
+	private CommentService commentService;
 
-	public CheckWriterInterceptor(UserBean loginUserBean, BoardService boardService) {
+	public CheckCommentWriterInterceptor(UserBean loginUserBean, CommentService commentService) {
 		this.loginUserBean = loginUserBean;
-		this.boardService = boardService;
+		this.commentService = commentService;
 	}
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		String str = request.getParameter("content_idx");
-		int content_idx = Integer.parseInt(str);
+		String str = request.getParameter("comment_idx");
+		int comment_idx = Integer.parseInt(str);
 		
-		ContentBean currentContentBean = boardService.selectContent(content_idx);
+		CommentBean currentCommentBean = commentService.selectComment(comment_idx);
 		
-		if (currentContentBean.getContent_writer_idx() != loginUserBean.getUser_idx()) {
+		if (currentCommentBean.getComment_writer_idx() != loginUserBean.getUser_idx()) {
 			String contextPath = request.getContextPath();
 			response.sendRedirect(contextPath + "/board/not_writer");
 			

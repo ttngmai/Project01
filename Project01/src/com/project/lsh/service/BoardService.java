@@ -90,8 +90,7 @@ public class BoardService {
 	}
 	
 	public ContentBean selectContent(int content_idx) {
-		int user_idx = loginUserBean.getUser_idx();
-		ContentBean readContentBean = boardDao.selectContent(content_idx, user_idx);
+		ContentBean readContentBean = boardDao.selectContent(content_idx, loginUserBean.getUser_idx());
 		
 		return readContentBean;
 	}
@@ -100,7 +99,7 @@ public class BoardService {
 		return boardDao.selectCommentCnt(content_idx);
 	}
 	
-	public void updateContent(ContentBean contentBean) {
+	public int updateContent(ContentBean contentBean) {
 		MultipartFile upload_file = contentBean.getUpload_file();
 		
 		if (upload_file.getSize() > 0) {
@@ -108,10 +107,10 @@ public class BoardService {
 			contentBean.setContent_file(file_name);
 		}
 		
-		boardDao.updateContent(contentBean);
+		return boardDao.updateContent(contentBean);
 	}
 	
-	public void deleteContent(int content_idx) {
-		boardDao.deleteContent(content_idx);
+	public int deleteContent(int content_idx) {
+		return boardDao.deleteContent(content_idx);
 	}
 }

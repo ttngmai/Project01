@@ -1,0 +1,37 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-17623db41c5-3787c5542b52d895": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "project01",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "project01",
+				"url": "jdbc:mysql://localhost:3306/project01",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"properties": {
+					"connectTimeout": "20000",
+					"serverTimezone": "UTC"
+				},
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

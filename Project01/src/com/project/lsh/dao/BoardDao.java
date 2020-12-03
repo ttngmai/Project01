@@ -32,7 +32,6 @@ public class BoardDao {
 	}
 	
 	public void insertContent(ContentBean contentBean) {
-		for(int i = 0; i < 20; i++)
 		boardMapper.insertContent(contentBean);
 	}
 	
@@ -56,11 +55,11 @@ public class BoardDao {
 		return boardMapper.selectCommentCnt(content_idx);
 	}
 	
-	public void updateContent(ContentBean contentBean) {
-		boardMapper.updateContent(contentBean);
+	public int updateContent(ContentBean contentBean) {
+		return boardMapper.updateContent(contentBean);
 	}
 	
-	public void deleteContent(int content_idx) {
-		boardMapper.deleteContent(content_idx);
+	public int deleteContent(int content_idx) {
+		return boardMapper.deleteContent(content_idx);
 	}
 }

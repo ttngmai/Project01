@@ -27,7 +27,7 @@ public class CommentService {
 	@Autowired
 	private CommentDao commentDao;
 
-	public int insertComment(CommentBean commentBean) {
+	public void insertComment(CommentBean commentBean) {
 		commentBean.setComment_writer_idx(loginUserBean.getUser_idx());
 		int content_idx = commentBean.getContent_idx();
 		int comment_parent_idx = commentBean.getComment_parent_idx();
@@ -38,7 +38,7 @@ public class CommentService {
 			commentDao.updateReplyCnt(content_idx, comment_parent_idx);
 		}
 		
-		return commentDao.insertComment(commentBean);
+		commentDao.insertComment(commentBean);
 	}
 	
 	public List<CommentBean> selectCommentList(int content_idx, int comment_parent_idx, int page) {
@@ -48,6 +48,10 @@ public class CommentService {
 		List<CommentBean> commentList = commentDao.selectCommentList(content_idx, comment_parent_idx, user_idx, rowBounds);
 		
 		return commentList;
+	}
+	
+	public CommentBean selectComment(int comment_idx) {
+		return commentDao.selectComment(comment_idx, loginUserBean.getUser_idx());
 	}
 	
 	public String selectCommentText(int comment_idx) {

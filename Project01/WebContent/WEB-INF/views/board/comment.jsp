@@ -40,30 +40,28 @@
 			success : function(data) {
 				var json_data = JSON.parse(data);
 				
-				if (json_data.write_result == 1) {
-					$(textareaComment).val('');
-					
-					if (comment_parent_idx == 0) {
-						getCommentList(json_data.last_page);
-						$('.content-comment-cnt').html(json_data.comment_cnt);
-					} else {
-						getReplyList(comment_parent_idx, json_data.last_page);
-						$('.reply_cnt[data-comment_idx="' + comment_parent_idx + '"]').html(json_data.reply_cnt);
-					}
+				$(textareaComment).val('');
+				
+				if (comment_parent_idx == 0) {
+					getCommentList(json_data.last_page);
+					$('.content-comment-cnt').html(json_data.comment_cnt);
+				} else {
+					getReplyList(comment_parent_idx, json_data.last_page);
+					$('.reply_cnt[data-comment_idx="' + comment_parent_idx + '"]').html(json_data.reply_cnt);
 				}
 			}
 		});
 	}
 	
-	function updateComment(comment_idx, comment_text) {
+	function modifyComment(comment_idx, comment_text) {
 		$.ajax({
-			url : '${root}/comment/update',
+			url : '${root}/comment/modify',
 			type : 'post',
 			data : {'comment_idx' : comment_idx,
 					'comment_text' : comment_text},
 			success : function() {
 				$.ajax({
-					url : '${root}/comment/readOneText',
+					url : '${root}/comment/read_one_text',
 					type : 'get',
 					data : {'comment_idx' : comment_idx},
 					success : function(data) {
@@ -95,8 +93,6 @@
 					'page' : page},
 			success : function(data) {
 				var json_data = JSON.parse(data);
-				
-				console.log(json_data);
 				
 				var str = '';
 				
@@ -199,8 +195,6 @@
 			success : function(data) {
 				var json_data = JSON.parse(data);
 				
-				console.log(json_data);
-				
 				var str = '';
 				
 				$.each(json_data.comment_list, function(key, value) {
@@ -297,7 +291,7 @@
 		$('#modal-modify-comment [name="comment_idx"]').val(comment_idx);
 		
 		$.ajax({
-			url : '${root}/comment/readOneText',
+			url : '${root}/comment/read_one_text',
 			type : 'get',
 			data : {'comment_idx' : comment_idx},
 			success : function(data) {
@@ -307,12 +301,10 @@
 	});
 	
 	$(document).on('click', '#modal-modify-comment .btn-modify-save', function() {
-		console.log('저장 눌렀다');
-		
 		var comment_idx = $('#modal-modify-comment [name="comment_idx"]').val();
 		var comment_text = $('#modal-modify-comment [name="comment_text"]').val();
 		
-		updateComment(comment_idx, comment_text);
+		modifyComment(comment_idx, comment_text);
 	});
 	
 	$(document).on('click', '.btn-delete-comment', function() {

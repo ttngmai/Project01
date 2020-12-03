@@ -143,9 +143,9 @@ public interface BoardMapper {
 			"set content_subject = #{content_subject}, content_text = #{content_text}," +
 			"	 content_file = nullif(#{content_file, jdbcType=VARCHAR}, '') " +
 			"where content_idx = #{content_idx}")
-	void updateContent(ContentBean contentBean);
+	int updateContent(ContentBean contentBean);
 	
 	@Delete("delete from content_table " +
 			"where content_idx = #{content_idx}")
-	void deleteContent(@Param("content_idx") int content_idx);
+	int deleteContent(@Param("content_idx") int content_idx);
 }

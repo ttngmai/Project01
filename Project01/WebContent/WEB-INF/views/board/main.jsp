@@ -27,8 +27,8 @@
 					<thead>
 						<tr>
 							<th class="text-center d-none d-md-table-cell">글번호</th>
-							<th class="w-50">제목</th>
-							<th class="text-center d-none d-md-table-cell">작성자</th>
+							<th>제목</th>
+							<th class="text-center">작성자</th>
 							<th class="text-center d-none d-md-table-cell">작성날짜</th>
 						</tr>
 					</thead>
@@ -37,7 +37,7 @@
 						<tr>
 							<td class="text-center d-none d-md-table-cell">${obj.content_idx }</td>
 							<td><a href="${root }/board/read?board_idx=${board_idx}&content_idx=${obj.content_idx}&page=${page}&searchType=${searchType}&searchKeyword=${searchKeyword}">${obj.content_subject }</a></td>
-							<td class="text-center d-none d-md-table-cell">${obj.content_writer_name }</td>
+							<td class="text-center">${obj.content_writer_name }</td>
 							<td class="text-center d-none d-md-table-cell">${obj.content_date }</td>
 						</tr>
 					</c:forEach>

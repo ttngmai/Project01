@@ -87,8 +87,11 @@ public class BoardController {
 	}
 	
 	@PostMapping("/write_pro")
-	public String write_pro(@Valid @ModelAttribute("writeContentBean") ContentBean writeContentBean,
-						    BindingResult result) {
+	public String writePro(@Valid @ModelAttribute("writeContentBean") ContentBean writeContentBean,
+						    BindingResult result,
+						    Model model) {
+		model.addAttribute("board_idx", writeContentBean.getBoard_idx());
+		
 		if (result.hasErrors()) {
 			return "board/write";
 		}
@@ -127,16 +130,14 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify_pro")
-	public String modfiy_pro(@RequestParam("board_idx") int board_idx,
-			 				 @RequestParam("content_idx") int content_idx,
-							 @RequestParam(value = "searchType", defaultValue = "") String searchType,
+	public String modifyPro(@RequestParam(value = "searchType", defaultValue = "") String searchType,
 							 @RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword,
 			 				 @RequestParam("page") int page,
 							 @Valid @ModelAttribute("modifyContentBean") ContentBean modifyContentBean,
 							 BindingResult result,
 							 Model model) {
-		model.addAttribute("board_idx", board_idx);
-		model.addAttribute("content_idx", content_idx);
+		model.addAttribute("board_idx", modifyContentBean.getBoard_idx());
+		model.addAttribute("content_idx", modifyContentBean.getContent_idx());
 		model.addAttribute("searchType", searchType);
 		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("page", page);
@@ -162,7 +163,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/not_writer")
-	public String not_writer() {
+	public String notWriter() {
 		return "board/not_writer";
 	}
 	

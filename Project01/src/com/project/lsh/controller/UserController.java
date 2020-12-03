@@ -42,7 +42,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/login_pro")
-	public String login_pro(@Validated(ValidationGroups.PasswordGroup.class)
+	public String loginPro(@Validated(ValidationGroups.PasswordGroup.class)
 							@ModelAttribute("tempLoginUserBean") UserBean tempLoginUserBean,
 							BindingResult result) {
 		if (result.hasErrors()) {
@@ -68,7 +68,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/join_pro")
-	public String join_pro(@Validated({Default.class, ValidationGroups.PasswordGroup.class, ValidationGroups.EmailGroup.class})
+	public String joinPro(@Validated({Default.class, ValidationGroups.PasswordGroup.class, ValidationGroups.EmailGroup.class})
 						   @ModelAttribute("joinUserBean") UserBean joinUserBean,
 						   BindingResult result,
 						   Model model) {
@@ -91,7 +91,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/mail/join")
-	public String auth_user_email(@RequestParam("user_email") String user_email,
+	public String authUserEmail(@RequestParam("user_email") String user_email,
 								  @RequestParam("auth_key") String auth_key) {
 		boolean isCheckedEmail = userService.checkValidAuthKeyForJoin(user_email, auth_key);
 		
@@ -105,38 +105,38 @@ public class UserController {
 	}
 	
 	@GetMapping("/not_auth_user")
-	public String not_auth_user() {
+	public String notAuthUser() {
 		return "user/not_auth_user";
 	}
 	
 	@GetMapping("/mypage")
-	public String modify(@ModelAttribute("readUserBean") UserBean readUserBean) {
+	public String mypage(@ModelAttribute("readUserBean") UserBean readUserBean) {
 		userService.selectUser(readUserBean);
 		
 		return "user/mypage";
 	}
 	
 	@GetMapping("/modify_profile")
-	public String modfiy_profile(@ModelAttribute("modifyUserBean") UserBean modifyUserBean) {
+	public String modfiyProfile(@ModelAttribute("modifyUserBean") UserBean modifyUserBean) {
 		userService.selectUser(modifyUserBean);
 		
 		return "user/modify_profile";
 	}
 	
 	@PostMapping("/modify_profile_pro")
-	public String modify_profile_pro(@ModelAttribute("modifyUserBean") UserBean modifyUserBean) {
+	public String modifyProfilePro(@ModelAttribute("modifyUserBean") UserBean modifyUserBean) {
 		userService.updateUserProfileImg(modifyUserBean);
 		
 		return "user/modify_success";
 	}
 	
 	@GetMapping("/modify_password")
-	public String modify_password(@ModelAttribute("modifyUserBean") UserBean modifyUserBean) {
+	public String modifyPassword(@ModelAttribute("modifyUserBean") UserBean modifyUserBean) {
 		return "user/modify_password";
 	}
 	
 	@PostMapping("/modify_password_pro")
-	public String modify_password_pro(@Validated(ValidationGroups.PasswordGroup.class)
+	public String modifyPasswordPro(@Validated(ValidationGroups.PasswordGroup.class)
 									  @ModelAttribute("modifyUserBean") UserBean modifyUserBean,
 									  BindingResult result) {
 		if (result.hasErrors()) {
@@ -149,12 +149,12 @@ public class UserController {
 	}
 	
 	@GetMapping("/modify_email")
-	public String modify_email(@ModelAttribute("modifyUserBean") UserBean modifyUserBean) {
+	public String modifyEmail(@ModelAttribute("modifyUserBean") UserBean modifyUserBean) {
 		return "user/modify_email";
 	}
 	
 	@PostMapping("/modify_email_pro")
-	public String modify_email_pro(@Validated(ValidationGroups.EmailGroup.class)
+	public String modifyEmailPro(@Validated(ValidationGroups.EmailGroup.class)
 								   @ModelAttribute("modifyUserBean") UserBean modifyUserBean,
 								   BindingResult result) {
 		if (result.hasErrors()) {
@@ -167,7 +167,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/mail/modify_email")
-	public String modify_user_email(@RequestParam("user_email") String user_email,
+	public String modifyUserEmail(@RequestParam("user_email") String user_email,
 			  						@RequestParam("auth_key") String auth_key) {
 		boolean isCheckedEmail = userService.checkValidAuthKeyForUpdate(user_email, auth_key);
 		
@@ -188,7 +188,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/not_login")
-	public String not_login() {
+	public String notLogin() {
 		return "user/not_login";
 	}
 	

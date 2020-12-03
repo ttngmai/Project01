@@ -1,6 +1,7 @@
 package com.project.lsh.beans;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,6 +9,7 @@ public class ContentBean {
     private int content_idx;
     private int board_idx;
     @NotBlank
+    @Size(max = 100)
     private String content_subject; 
     @NotBlank
     private String content_text;

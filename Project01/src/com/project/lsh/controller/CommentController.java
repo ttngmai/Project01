@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class CommentController {
 			int content_idx = writeCommentBean.getContent_idx();
 			int comment_parent_idx = writeCommentBean.getComment_parent_idx();
 			
-			writeResultMap.put("write_result", commentService.insertComment(writeCommentBean));
+			commentService.insertComment(writeCommentBean);
 			
 			if (comment_parent_idx == 0) {
 				writeResultMap.put("comment_cnt", boardService.selectCommentCnt(content_idx));
@@ -81,21 +82,26 @@ public class CommentController {
 		return null;
 	}
 	
-	@RequestMapping(value="/readOneText", method = RequestMethod.GET, produces="application/text; charset=UTF-8")
+	@RequestMapping(value="/read_one_text", method = RequestMethod.GET, produces="application/text; charset=UTF-8")
 	@ResponseBody
 	public String readOneText(@RequestParam("comment_idx") int comment_idx) {
 		return commentService.selectCommentText(comment_idx);
 	}
 	
-	@PostMapping("/update")
+	@PostMapping("/modify")
 	@ResponseBody
-	public void update(@ModelAttribute("updateCommentBean") CommentBean updateCommentBean) {
-		commentService.updateComment(updateCommentBean);
+	public void modify(@ModelAttribute("modifyCommentBean") CommentBean modifyCommentBean) {
+		commentService.updateComment(modifyCommentBean);
 	}
 	
 	@PostMapping("/delete")
 	@ResponseBody
 	public void delete(@RequestParam("comment_idx") int comment_idx) {
 		commentService.updateCommentDeleteStatus(comment_idx);
+	}
+	
+	@GetMapping("/not_writer")
+	public String notWriter() {
+		return "board/not_writer";
 	}
 }
