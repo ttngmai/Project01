@@ -14,7 +14,8 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-*.properties
+mail.properties
+db.properties
 
 # External tool builders
 .externalToolBuilders/
