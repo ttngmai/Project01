@@ -28,7 +28,7 @@
 							<form:hidden path="board_idx"/>
 							<div class="form-group">
 								<form:label path="content_subject">제목</form:label>
-								<form:input path="content_subject" class="form-control" autocomplete="off"/>
+								<form:input path="content_subject" class="form-control" autocomplete="off" maxlength="100"/>
 								<form:errors path="content_subject" style="color:red"/>
 							</div>
 							<div class="form-group">

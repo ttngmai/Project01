@@ -16,7 +16,7 @@ import com.project.lsh.beans.UserBean;
 import com.project.lsh.dao.CommentDao;
 
 @Service
-@PropertySource("/WEB-INF/properties/option.properties")
+@PropertySource("/WEB-INF/properties/page.properties")
 public class CommentService {
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;

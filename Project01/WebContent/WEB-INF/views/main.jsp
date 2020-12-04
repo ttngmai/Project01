@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 	<!-- Font Awesome CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+	<!--  -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/CSS/main.css"/>
 </head>
 <body>
 
@@ -26,7 +28,7 @@
 						<table class="table table-hover" id="board_list">
 							<thead>
 								<tr>
-									<th>제목</th>
+									<th class="w-50">제목</th>
 									<th class="text-center w-25">작성자</th>
 									<th class="text-center w-25 d-none d-xl-table-cell">작성날짜</th>
 								</tr>
@@ -34,7 +36,11 @@
 							<tbody>
 							<c:forEach var="obj" items="${sub_list }">
 								<tr>
-									<th><a href="${root }/board/read?board_idx=${boardList[idx.index].board_idx }&content_idx=${obj.content_idx }">${obj.content_subject }</a></th>
+									<td>
+										<div class="text-ellipsis">
+											<a href="${root }/board/read?board_idx=${boardList[idx.index].board_idx }&content_idx=${obj.content_idx }">${obj.content_subject }</a>
+										</div>
+									</td>
 									<td class="text-center">${obj.content_writer_name }</td>
 									<td class="text-center d-none d-xl-table-cell">${obj.content_date }</td>
 								</tr>

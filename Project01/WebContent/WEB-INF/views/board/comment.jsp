@@ -309,8 +309,20 @@
 	
 	$(document).on('click', '.btn-delete-comment', function() {
 		var comment_idx = $(this).data('comment_idx');
-
-		deleteComment(comment_idx);
+		
+		Swal.fire({
+			title : '댓글 삭제',
+			text : '댓글을 삭제 하시겠습니까?',
+			icon : 'warning',
+			showCancelButton : true,
+			confirmButtonText : '삭제',
+			cancelButtonText : '취소'
+		}).then((result) => {
+		// button의 value를 result로 받아서 사용
+			if (result.isConfirmed) {
+				deleteComment(comment_idx);
+			}
+		});
 	});
 	
 	$(document).on('click', '.toggle-reply', function() {

@@ -1,11 +1,11 @@
-alter table auth_table drop constraint FK1_auth_table;
-alter table content_table drop constraint FK1_content_table;
-alter table content_table drop constraint FK2_content_table;
-alter table comment_table drop constraint FK1_comment_table;
-alter table comment_table drop constraint FK2_comment_table;
-alter table like_table drop constraint FK1_like_table;
-alter table like_table drop constraint FK2_like_table;
-alter table like_table drop constraint FK3_like_table;
+ALTER TABLE auth_table DROP CONSTRAINT FK1_auth_table;
+ALTER TABLE content_table DROP CONSTRAINT FK1_content_table;
+ALTER TABLE content_table DROP CONSTRAINT FK2_content_table;
+ALTER TABLE comment_table DROP CONSTRAINT FK1_comment_table;
+ALTER TABLE comment_table DROP CONSTRAINT FK2_comment_table;
+ALTER TABLE like_table DROP CONSTRAINT FK1_like_table;
+ALTER TABLE like_table DROP CONSTRAINT FK2_like_table;
+ALTER TABLE like_table DROP CONSTRAINT FK3_like_table;
 
 DROP TABLE user_table CASCADE;
 DROP TABLE auth_table CASCADE;

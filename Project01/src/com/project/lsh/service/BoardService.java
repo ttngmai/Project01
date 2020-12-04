@@ -18,7 +18,7 @@ import com.project.lsh.beans.UserBean;
 import com.project.lsh.dao.BoardDao;
 
 @Service
-@PropertySource("/WEB-INF/properties/option.properties")
+@PropertySource("/WEB-INF/properties/page.properties")
 public class BoardService {
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;

@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 	<!-- Bootstrap-Select CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css"/>
+	<!--  -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/CSS/board_main.css"/>
 </head>
 <body>
 
@@ -27,7 +29,7 @@
 					<thead>
 						<tr>
 							<th class="text-center d-none d-md-table-cell">글번호</th>
-							<th>제목</th>
+							<th class="w-50">제목</th>
 							<th class="text-center">작성자</th>
 							<th class="text-center d-none d-md-table-cell">작성날짜</th>
 						</tr>
@@ -36,7 +38,11 @@
 					<c:forEach var="obj" items="${contentList }">
 						<tr>
 							<td class="text-center d-none d-md-table-cell">${obj.content_idx }</td>
-							<td><a href="${root }/board/read?board_idx=${board_idx}&content_idx=${obj.content_idx}&page=${page}&searchType=${searchType}&searchKeyword=${searchKeyword}">${obj.content_subject }</a></td>
+							<td>
+								<div class="text-ellipsis">
+									<a href="${root }/board/read?board_idx=${board_idx}&content_idx=${obj.content_idx}&page=${page}&searchType=${searchType}&searchKeyword=${searchKeyword}">${obj.content_subject }</a>
+								</div>
+							</td>
 							<td class="text-center">${obj.content_writer_name }</td>
 							<td class="text-center d-none d-md-table-cell">${obj.content_date }</td>
 						</tr>

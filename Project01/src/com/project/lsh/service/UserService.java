@@ -15,7 +15,7 @@ import com.project.lsh.dao.AuthDao;
 import com.project.lsh.dao.UserDao;
 
 @Service
-@PropertySource("/WEB-INF/properties/option.properties")
+@PropertySource("/WEB-INF/properties/page.properties")
 public class UserService {
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;

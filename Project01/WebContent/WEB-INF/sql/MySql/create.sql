@@ -11,7 +11,6 @@ CREATE TABLE user_table
     PRIMARY KEY (user_idx)
 );
 
-
 CREATE TABLE auth_table
 (
     `auth_idx`  INT             NOT NULL    AUTO_INCREMENT, 

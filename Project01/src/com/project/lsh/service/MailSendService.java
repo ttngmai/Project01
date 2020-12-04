@@ -76,7 +76,7 @@ public class MailSendService {
 		// 인증메일 보내기
 		MimeMessage message = mailSender.createMimeMessage();
 		String mailContent = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 회원가입이 완료됩니다.</p>"
-							 + "<a href='http://localhost:8000/Project01/user/mail/join?"
+							 + "<a href='http://52.79.58.253:8080/project01/user/mail/join?"
 							 + "user_email=" + user_email + "&auth_key=" + auth_key
 							 + "' target='_blank'>이메일 인증 확인</a>";
 
@@ -109,7 +109,7 @@ public class MailSendService {
 		// 인증메일 보내기
 		MimeMessage message = mailSender.createMimeMessage();
 		String mailContent = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
-							 + "<a href='http://localhost:8000/Project01/user/mail/modify_email?"
+							 + "<a href='http://52.79.58.253:8080/project01/user/mail/modify_email?"
 							 + "user_email=" + user_email + "&auth_key=" + auth_key
 							 + "' target='_blank'>이메일 인증 확인</a>";
 
