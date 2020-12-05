@@ -18,14 +18,14 @@
 
 	<c:import url="/WEB-INF/views/common/top_nav.jsp"/>
 
-	<div class="container" style="margin-top:100px">
+	<div class="container" style="margin-top: 100px;">
 		<div class="row">
 		<c:forEach var="sub_list" items="${contentList }" varStatus="idx">
-			<div class="col-lg-6" style="margin-top:20px">
+			<div class="col-lg-6" style="margin-top: 20px;">
 				<div class="card shadow">
 					<div class="card-body">
 						<h4 class="card-title">${boardList[idx.index].board_name }</h4>
-						<table class="table table-hover" id="board_list">
+						<table id="board_list" class="table table-hover">
 							<thead>
 								<tr>
 									<th class="w-50">제목</th>

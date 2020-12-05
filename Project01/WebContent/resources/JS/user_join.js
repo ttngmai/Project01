@@ -6,9 +6,10 @@ function getContextPath() {
 function checkUserIdExist() {
 	var root = getContextPath();
 	var user_id = $('#user_id').val();
+	var idRegexp = /^[a-zA-Z0-9]{4,20}$/;
 	
-	if (user_id.length == 0) {
-		Swal.fire('Warning', '아이디를 입력해 주세요.', 'warning');
+	if (!(idRegexp.test(user_id))) {
+		Swal.fire('Warning', '영문대소문자, 숫자 4 ~ 20글자로 구성되야 합니다.', 'warning');
 		return;
 	}
 	

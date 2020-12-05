@@ -18,10 +18,10 @@
 
 	<c:import url="/WEB-INF/views/common/top_nav.jsp"/>
 
-	<div class="container" style="margin-top:100px">
+	<div class="container" style="margin-top: 100px;">
 		<div class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-6">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
 				<div class="card shadow">
 					<div class="card-body">
 						<c:if test="${fail == true }">
@@ -33,23 +33,25 @@
 						<form:form action="${root }/user/login_pro" method="post" modelAttribute="tempLoginUserBean">
 							<div class="form-group">
 								<form:label path="user_id">아이디</form:label>
-								<form:input path="user_id" class="form-control" autocomplete="off"/>
-								<form:errors path="user_id" style="color:red"/>
+								<form:input path="user_id" class="form-control" maxlength="20" autocomplete="off"/>
+								<form:errors path="user_id" style="color: red;"/>
 							</div>
 							<div class="form-group">
 								<form:label path="user_pw">비밀번호</form:label>
 								<form:password path="user_pw" class="form-control" maxlength="12"/>
-								<form:errors path="user_pw" style="color:red"/>
+								<form:errors path="user_pw" style="color: red;"/>
 							</div>
-							<div class="form-group text-right">
+							<div class="float-left">
+								<a href="${root }/user/join" class="btn btn-warning">회원가입</a>
+							</div>
+							<div class="float-right">
 								<form:button class="btn btn-primary">로그인</form:button>
-								<a href="${root }/user/join" class="btn btn-danger">회원가입</a>
 							</div>
 						</form:form>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3"></div>
+			<div class="col-lg-3"></div>
 		</div>
 	</div>
 	

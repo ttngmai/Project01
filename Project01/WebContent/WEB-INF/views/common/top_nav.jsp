@@ -9,7 +9,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu">
         <span class="navbar-toggler-icon"></span>        
     </button>
-    <div class="collapse navbar-collapse" id="navMenu">
+    <div id="navMenu" class="collapse navbar-collapse">
         <ul class="navbar-nav">
         	<c:forEach var="obj" items="${topNavList }">
             <li class="nav-item">

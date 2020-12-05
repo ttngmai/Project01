@@ -1,6 +1,5 @@
 package com.project.lsh.service;
 
-import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,11 +18,14 @@ import com.project.lsh.dao.BoardDao;
 
 @Service
 @PropertySource("/WEB-INF/properties/page.properties")
+@PropertySource("/WEB-INF/properties/aws.properties")
 public class BoardService {
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
-	@Value("${path.upload}")
-	private String path_upload;
+	@Value("${s3.bucketKey}")
+	private String s3_bucketKey;
+	@Autowired
+	private AwsService awsService;
 	@Value("${page.contentListCnt}")
 	private int contentListCnt;
 	@Value("${page.contentPaginationCnt}")
@@ -50,24 +52,12 @@ public class BoardService {
 		
 		return pageBean;
 	}
-
-	private String saveUploadFile(MultipartFile upload_file) {
-		String file_name = System.currentTimeMillis() + "_" + upload_file.getOriginalFilename();
-		
-		try {
-			upload_file.transferTo(new File(path_upload + "/" + file_name));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return file_name;
-	}
 	
 	public void insertContent(ContentBean contentBean) {
 		MultipartFile upload_file = contentBean.getUpload_file();
 		
 		if (upload_file.getSize() > 0) {
-			String file_name = saveUploadFile(upload_file);
+			String file_name = awsService.uploadMultipartFile(upload_file, s3_bucketKey);
 			contentBean.setContent_file(file_name);
 		}
 		
@@ -103,7 +93,7 @@ public class BoardService {
 		MultipartFile upload_file = contentBean.getUpload_file();
 		
 		if (upload_file.getSize() > 0) {
-			String file_name = saveUploadFile(upload_file);
+			String file_name = awsService.uploadMultipartFile(upload_file, s3_bucketKey);
 			contentBean.setContent_file(file_name);
 		}
 		

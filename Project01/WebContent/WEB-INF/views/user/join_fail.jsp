@@ -17,11 +17,11 @@
 
 	<c:import url="/WEB-INF/views/common/top_nav.jsp"/>
 	
-	<div class="container" style="margin-top:100px">
+	<div class="container" style="margin-top: 100px;">
         <div class="card shadow">
             <div class="card-body">
                 <div class="text-center">
-                    <img src="${root }/image/question.jpg" alt="question" width="100%" style="max-width:500px"/>
+                    <img src="${root }/image/question.jpg" alt="question" width="100%" style="max-width: 500px;"/>
                     <h1>유효하지 않은 인증키입니다.</h1>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
+<c:set var="bucket" value="https://s3.ap-northeast-2.amazonaws.com/project01-upload/upload"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,9 @@
 							<div class="form-group">
 								<c:if test="${modifyContentBean.content_file != null }">
 								<label for="board_file">첨부 이미지</label>
-								<img src="${root }/upload/${modifyContentBean.content_file}" width="100%"/>	
+								<div class="text-center" style="margin: 1rem 0;">
+									<img id="attached-img" class="col-sm-8" src="${bucket }/${modifyContentBean.content_file}"/>	
+								</div>
 								</c:if>
 								<form:hidden path="content_file"/>
 								<form:input type="file" path="upload_file" class="form-control" accept="image/*"/>			
@@ -70,5 +73,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!--  -->
+	<script src="${pageContext.request.contextPath }/JS/board_modify.js"></script>
 </body>
 </html>

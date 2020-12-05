@@ -11,7 +11,7 @@ import com.project.lsh.validator.ValidationGroups;
 
 public class UserBean {
     private int user_idx; 
-    @Size(min = 2, max = 4)
+    @Size(min = 2, max = 8)
     @Pattern(regexp = "[가-힣]*")
     private String user_name;
     @Size(min = 4, max = 20, groups = {ValidationGroups.PasswordGroup.class})

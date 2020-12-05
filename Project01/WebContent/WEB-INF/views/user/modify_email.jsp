@@ -29,7 +29,7 @@
 						<div class="form-group">
 							<form:label path="user_email">이메일</form:label>
 							<form:input path="user_email" class="form-control"/>
-							<form:errors path="user_email" style="color:red"/>
+							<form:errors path="user_email" style="color: red;"/>
 						</div>
 						<div class="form-group">
 							<div>

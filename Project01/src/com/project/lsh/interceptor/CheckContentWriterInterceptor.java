@@ -27,6 +27,9 @@ public class CheckContentWriterInterceptor implements HandlerInterceptor {
 		ContentBean currentContentBean = boardService.selectContent(content_idx);
 		
 		if (currentContentBean.getContent_writer_idx() != loginUserBean.getUser_idx()) {
+			String contextPath = request.getContextPath();
+			response.sendRedirect(contextPath + "/board/not_writer");
+			
 			return false;
 		}
 		

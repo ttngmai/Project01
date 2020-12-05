@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
+<c:set var="bucket" value="https://s3.ap-northeast-2.amazonaws.com/project01-upload/upload"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 						<div class="box-profile-img text-center">
 						<c:choose>
 						<c:when test="${readUserBean.user_profile_img != null }">
-						<img src="${root }/upload/${readUserBean.user_profile_img}">
+						<img src="${bucket }/${readUserBean.user_profile_img}">
 						</c:when>
 						<c:otherwise>
 						<img src="${root }/image/profile.jpg">

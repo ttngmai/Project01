@@ -1,7 +1,5 @@
 package com.project.lsh.service;
 
-import java.io.File;
-
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +14,14 @@ import com.project.lsh.dao.UserDao;
 
 @Service
 @PropertySource("/WEB-INF/properties/page.properties")
+@PropertySource("/WEB-INF/properties/aws.properties")
 public class UserService {
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
-	@Value("${path.upload}")
-	private String path_upload;
+	@Value("${s3.bucketKey}")
+	private String s3_bucketKey;
+	@Autowired
+	private AwsService awsService;
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -74,25 +75,13 @@ public class UserService {
 		}
 	}
 	
-	private String saveUploadFile(MultipartFile upload_file) {
-		String file_name = System.currentTimeMillis() + "_" + upload_file.getOriginalFilename();
-		
-		try {
-			upload_file.transferTo(new File(path_upload + "/" + file_name));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return file_name;
-	}
-	
 	public void updateUserProfileImg(UserBean userBean) {
 		userBean.setUser_idx(loginUserBean.getUser_idx());
 		
 		MultipartFile upload_profile_img = userBean.getUpload_profile_img();
 		
 		if (upload_profile_img.getSize() > 0) {
-			String profile_img_name = saveUploadFile(upload_profile_img);
+			String profile_img_name = awsService.uploadMultipartFile(upload_profile_img, s3_bucketKey);
 			
 			userBean.setUser_profile_img(profile_img_name);
 		}

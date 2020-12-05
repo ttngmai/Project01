@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
+<c:set var="bucket" value="https://s3.ap-northeast-2.amazonaws.com/project01-upload/upload"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,10 +32,10 @@
 							<button type="button" class="btn-reset-profile-img"><i class="fas fa-trash-alt"></i></button>
 							<c:choose>
 							<c:when test="${modifyUserBean.user_profile_img != null }">
-							<img src="${root }/upload/${modifyUserBean.user_profile_img}">
+							<img id="attached-image" src="${bucket }/${modifyUserBean.user_profile_img}">
 							</c:when>
 							<c:otherwise>
-							<img src="${root }/image/profile.jpg">
+							<img id="attached-image" src="${root }/image/profile.jpg">
 							</c:otherwise>
 							</c:choose>
 							<button type="button" class="btn-reg-profile-img"><i class="fas fa-camera"></i></button>
@@ -48,7 +49,7 @@
 								<span>${modifyUserBean.user_email }</span>
 								<hr>
 								<div class="input-group">
-									<form:textarea path="user_introduction" class="form-control" rows="3" style="resize: none"/>
+									<form:textarea path="user_introduction" class="form-control" rows="3" style="resize: none;"/>
 								</div>
 							</div>
 							<hr>

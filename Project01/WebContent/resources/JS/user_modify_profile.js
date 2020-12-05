@@ -6,7 +6,7 @@ function getContextPath() {
 var root = getContextPath();
 
 function setThumbnail(event) {
-	var profile_img = $('.box-profile-img > img');
+	var profile_img = $('#attached-image');
 	
 	if (event.target.files[0]) {
 		var reader = new FileReader();

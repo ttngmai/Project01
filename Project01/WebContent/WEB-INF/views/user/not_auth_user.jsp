@@ -19,11 +19,11 @@
 
 	<c:import url="/WEB-INF/views/common/top_nav.jsp"/>
 	
-	<div class="container" style="margin-top:100px">
+	<div class="container" style="margin-top: 100px;">
         <div class="card shadow">
             <div class="card-body">
                 <div class="text-center">
-                    <img src="${root }/image/question.jpg" alt="welcome" width="100%" style="max-width:500px"/>
+                    <img src="${root }/image/question.jpg" alt="welcome" width="100%" style="max-width: 500px;"/>
                     <h1>이메일 인증 후 이용해 주세요.</h1>
                     <p>'My Page' -> '이메일 변경' 에서 인증 메일을 재전송 하실 수 있습니다.</p>
                 </div>

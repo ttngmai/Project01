@@ -118,24 +118,26 @@
 					str += '<span class="reply_cnt" data-comment_idx="' + value.comment_idx + '">' + value.reply_cnt + '</span>';
 					str += '</span>';
 					
-					str += '<div class="box-like-btns float-right">';
-					if (value.like_flag == 'L') {
-						str += '<a href="#" class="btn-like-comment checked" ';
-					} else {
-						str += '<a href="#" class="btn-like-comment" ';
+					if ('${loginUserBean.user_idx}' != value.comment_writer_idx) {
+						str += '<div class="box-like-btns float-right">';
+						if (value.like_flag == 'L') {
+							str += '<a href="#" class="btn-like-comment checked" ';
+						} else {
+							str += '<a href="#" class="btn-like-comment" ';
+						}
+						str += 'data-content_idx="' + value.content_idx + '" data-comment_idx="' + value.comment_idx + '" data-like_flag="L">';
+						str += '<i class="far fa-thumbs-up"></i><span class="comment-like-cnt">' + value.like_cnt + '</span>';
+						str += '</a>';
+						if (value.like_flag == 'D') {
+							str += '<a href="#" class="btn-dislike-comment checked" ';
+						} else {
+							str += '<a href="#" class="btn-dislike-comment" ';
+						}
+						str += 'data-content_idx="' + value.content_idx + '" data-comment_idx="' + value.comment_idx + '" data-like_flag="D">';
+						str += '<i class="far fa-thumbs-down"></i><span class="comment-dislike-cnt">' + value.dislike_cnt + '</span>';
+						str += '</a>';
+						str += '</div>';
 					}
-					str += 'data-content_idx="' + value.content_idx + '" data-comment_idx="' + value.comment_idx + '" data-like_flag="L">';
-					str += '<i class="far fa-thumbs-up"></i><span class="comment-like-cnt">' + value.like_cnt + '</span>';
-					str += '</a>';
-					if (value.like_flag == 'D') {
-						str += '<a href="#" class="btn-dislike-comment checked" ';
-					} else {
-						str += '<a href="#" class="btn-dislike-comment" ';
-					}
-					str += 'data-content_idx="' + value.content_idx + '" data-comment_idx="' + value.comment_idx + '" data-like_flag="D">';
-					str += '<i class="far fa-thumbs-down"></i><span class="comment-dislike-cnt">' + value.dislike_cnt + '</span>';
-					str += '</a>';
-					str += '</div>';
 						
 					str += '</div>';
 					str += '</div>';
@@ -215,24 +217,28 @@
 					str += '<div class="comment_text" data-comment_idx="' + value.comment_idx + '" style="white-space: pre;">' + value.comment_text + '</div>';
 					str += '<div class="comment-score">';
 					
-					str += '<div class="box-like-btns float-right">';
-					if (value.like_flag == 'L') {
-						str += '<a href="#" class="btn-like-comment checked" ';
+					if ('${loginUserBean.user_idx}' != value.comment_writer_idx) {
+						str += '<div class="box-like-btns float-right">';
+						if (value.like_flag == 'L') {
+							str += '<a href="#" class="btn-like-comment checked" ';
+						} else {
+							str += '<a href="#" class="btn-like-comment" ';
+						}
+						str += 'data-content_idx="' + value.content_idx + '" data-comment_idx="' + value.comment_idx + '" data-like_flag="L">';
+						str += '<i class="far fa-thumbs-up"></i><span class="comment-like-cnt">' + value.like_cnt + '</span>';
+						str += '</a>';
+						if (value.like_flag == 'D') {
+							str += '<a href="#" class="btn-dislike-comment checked" ';
+						} else {
+							str += '<a href="#" class="btn-dislike-comment" ';
+						}
+						str += 'data-content_idx="' + value.content_idx + '" data-comment_idx="' + value.comment_idx + '" data-like_flag="D">';
+						str += '<i class="far fa-thumbs-down"></i><span class="comment-dislike-cnt">' + value.dislike_cnt + '</span>';
+						str += '</a>';
+						str += '</div>';
 					} else {
-						str += '<a href="#" class="btn-like-comment" ';
+						str += '<div style="height: 24px;"></div>';
 					}
-					str += 'data-content_idx="' + value.content_idx + '" data-comment_idx="' + value.comment_idx + '" data-like_flag="L">';
-					str += '<i class="far fa-thumbs-up"></i><span class="comment-like-cnt">' + value.like_cnt + '</span>';
-					str += '</a>';
-					if (value.like_flag == 'D') {
-						str += '<a href="#" class="btn-dislike-comment checked" ';
-					} else {
-						str += '<a href="#" class="btn-dislike-comment" ';
-					}
-					str += 'data-content_idx="' + value.content_idx + '" data-comment_idx="' + value.comment_idx + '" data-like_flag="D">';
-					str += '<i class="far fa-thumbs-down"></i><span class="comment-dislike-cnt">' + value.dislike_cnt + '</span>';
-					str += '</a>';
-					str += '</div>';
 						
 					str += '</div>';
 					str += '</div>';

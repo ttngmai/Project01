@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
+<c:set var="bucket" value="https://s3.ap-northeast-2.amazonaws.com/project01-upload/upload"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 	<!-- Font Awesome CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 	<!-- SweetAlert CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css"/>
 	<!--  -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/CSS/board_read.css"/>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/CSS/board_comment.css"/>
@@ -35,7 +36,7 @@
 	                       		<a href="#" style="width: 48px; height: 48px;">
 	                       			<c:choose>
                         			<c:when test="${readContentBean.content_writer_profile_img != null }">
-	                       			<img src="${root }/upload/${readContentBean.content_writer_profile_img}" width="48px" height="48px" style="border-radius: 50%;">
+	                       			<img src="${bucket }/${readContentBean.content_writer_profile_img}" width="48px" height="48px" style="border-radius: 50%;">
 									</c:when>
 									<c:otherwise>
 									<img src="${root }/image/profile.jpg" width="48px" height="48px" style="border-radius: 50%;">
@@ -68,8 +69,8 @@
 						</c:if>
 						<textarea id="board_content" name="board_content" class="form-control" rows="10" style="resize: none;" disabled="disabled">${readContentBean.content_text }</textarea>
 						<c:if test="${readContentBean.content_file != null }">
-						<div class="text-center">
-							<img src="${root }/upload/${readContentBean.content_file}" width="60%"/>
+						<div class="text-center" style="margin: 1rem 0;">
+							<img class="col-sm-8" src="${bucket }/${readContentBean.content_file}"/>
 						</div>
 						</c:if>
 						<c:if test="${loginUserBean.user_idx != readContentBean.content_writer_idx }">

@@ -17,11 +17,11 @@
 
 	<c:import url="/WEB-INF/views/common/top_nav.jsp"/>
 	
-	<div class="container" style="margin-top:100px">
+	<div class="container" style="margin-top: 100px;">
         <div class="card shadow">
             <div class="card-body">
                 <div class="text-center">
-                    <img src="${root }/image/welcome.jpg" alt="welcome" width="100%" style="max-width:500px"/>
+                    <img src="${root }/image/welcome.jpg" alt="welcome" width="100%" style="max-width: 500px;"/>
                     <h1>회원가입이 완료되었습니다!</h1>
                     <p><b><a href="${root }/user/login">로그인</a></b> 후 게시판 서비스를 이용하실 수 있습니다.</p>
                 </div>

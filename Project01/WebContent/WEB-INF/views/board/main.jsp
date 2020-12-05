@@ -25,7 +25,7 @@
 		<div class="card shadow">
 			<div class="card-body">
 				<h4 class="card-title">${board_name }</h4>
-				<table class="table table-hover" id="board_list">
+				<table id="board_list" class="table table-hover">
 					<thead>
 						<tr>
 							<th class="text-center d-none d-md-table-cell">글번호</th>

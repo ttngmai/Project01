@@ -17,11 +17,11 @@
 
 	<c:import url="/WEB-INF/views/common/top_nav.jsp"/>
 	
-	<div class="container" style="margin-top:100px">
+	<div class="container" style="margin-top: 100px;">
         <div class="card shadow">
             <div class="card-body">
                 <div class="text-center">
-                    <img src="${root }/image/mail.jpg" alt="send_mail" width="100%" style="max-width:500px"/>
+                    <img src="${root }/image/mail.jpg" alt="send_mail" width="100%" style="max-width: 500px;"/>
                     <h1>계정이 생성되었습니다!</h1>
                     <p>${user_email } 로 인증 메일이 전송되었습니다.</p>
                     <p>인증 메일 확인을 하시면 회원가입이 완료됩니다.</p>

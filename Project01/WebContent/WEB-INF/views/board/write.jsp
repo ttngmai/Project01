@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 	<!-- Font Awesome CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+	<!--  -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/CSS/board_write.css"/>
 </head>
 <body>
 
@@ -27,7 +29,7 @@
 						<form:form action="${root }/board/write_pro" method="post" modelAttribute="writeContentBean" enctype="multipart/form-data">
 							<form:hidden path="board_idx"/>
 							<div class="form-group">
-								<form:label path="content_subject">제목</form:label>
+								<form:label path="content_subject">제목<span class="input-constraint">최대 100글자</span></form:label>
 								<form:input path="content_subject" class="form-control" autocomplete="off" maxlength="100"/>
 								<form:errors path="content_subject" style="color:red"/>
 							</div>
@@ -36,11 +38,11 @@
 								<form:textarea path="content_text" class="form-control" rows="10" style="resize:none"/>
 								<form:errors path="content_text" style="color:red"/>
 							</div>
-							<div class="text-center">
-								<img id="content_file" width="60%">
-							</div>
 							<div class="form-group">
 								<form:label path="upload_file">첨부 이미지</form:label>
+								<div class="text-center" style="margin: 1rem 0;">
+									<img id="attached-img" class="col-sm-8" src="">
+								</div>
 								<form:input type="file" path="upload_file" class="form-control" accept="image/*"/>
 							</div>
 							<div class="form-group">

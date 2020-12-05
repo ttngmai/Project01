@@ -27,9 +27,6 @@ public class CheckCommentWriterInterceptor implements HandlerInterceptor {
 		CommentBean currentCommentBean = commentService.selectComment(comment_idx);
 		
 		if (currentCommentBean.getComment_writer_idx() != loginUserBean.getUser_idx()) {
-			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath + "/board/not_writer");
-			
 			return false;
 		}
 		
