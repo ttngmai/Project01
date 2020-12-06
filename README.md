@@ -1,6 +1,8 @@
 # Project01
+- 사이트 주소: http://52.79.58.253:8080/Project01/main
 - Spring FrameWork을 사용하여 MVC 패턴으로 만든 게시판입니다.
 - 사이트의 전체적인 디자인은 BootStrap4를 활용하였습니다.
+- AWS의 EC2 서비스를 이용하여 배포하였습니다.
 
 ## 테이블 구조
 ![프로젝트 테이블 구조](https://user-images.githubusercontent.com/63570797/100882309-610e7700-34f2-11eb-9a19-344b623cca4c.png)
