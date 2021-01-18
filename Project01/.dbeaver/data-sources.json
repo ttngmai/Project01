@@ -1,17 +1,18 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-17628f463c4-362dfca46ebe2ffb": {
+		"mysql8-176383d3f18-36aebb674428d78c": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "lsh-project01.cq5djxxvvx1a.ap-northeast-2.rds.amaz",
+			"name": "project01",
 			"save-password": true,
 			"show-system-objects": true,
 			"read-only": false,
 			"configuration": {
-				"host": "lsh-project01.cq5djxxvvx1a.ap-northeast-2.rds.amazonaws.com",
+				"host": "aws-project01.cq5djxxvvx1a.ap-northeast-2.rds.amazonaws.com",
 				"port": "3306",
-				"url": "jdbc:mysql://lsh-project01.cq5djxxvvx1a.ap-northeast-2.rds.amazonaws.com:3306/",
+				"database": "project01",
+				"url": "jdbc:mysql://aws-project01.cq5djxxvvx1a.ap-northeast-2.rds.amazonaws.com:3306/project01",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
 				"type": "dev",
 				"auth-model": "native",
